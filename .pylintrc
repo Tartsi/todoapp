@@ -1,0 +1,19 @@
+[MASTER]
+
+ignore=tests
+
+[MESSAGE CONTROL]
+
+disable=raw-checker-failed,
+        useless-suppression,
+        use-symbolic-message-instead,
+        broad-exception-caught,
+        too-few-public-methods,
+
+[FORMAT]
+max-line-length = 80
+
+[DESIGN]
+max-branches = 10
+max-locals = 10
+max-args = 5
