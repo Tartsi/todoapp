@@ -12,6 +12,6 @@
 - Task management; Creation, Viewing, Updating and Deleting of tasks
 - Basic UI
 - Persistent data storage
-- Testing; Unit tests and possibly intergration tests
+- Testing; Unittests; using Django's built-in 'TestCase' class - possibly intergration tests
 
 - Possible enhancements and new features will be added as the project advances.
