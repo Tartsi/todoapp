@@ -9,9 +9,12 @@ disable=raw-checker-failed,
         use-symbolic-message-instead,
         broad-exception-caught,
         too-few-public-methods,
+        missing-module-docstring,
+        missing-class-docstring,
+        function-redefined
 
 [FORMAT]
-max-line-length = 80
+max-line-length = 100
 
 [DESIGN]
 max-branches = 10
