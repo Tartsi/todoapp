@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="static/index.css">
+    <link rel="stylesheet" href="/static/index.css">
 </head>
 <body>
     <h1>Todo-List application</h1>
@@ -18,13 +18,15 @@
             <input type="text" id="username" name="username" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
+            <button type="submit" onclick="return checkContent()">Login</button>
             {% if form.errors %}
-                <p>Your username and/or password didn't match. Please try again.</p>
+                <!-- TODO: -->
             {% endif %}
         </form>
         <h3>No account yet? Consider registering <a href="/register/">here!</a></h3>
     </div>
+
+    <script src="/static/index.js"></script>
 
 </body>
 </html>
