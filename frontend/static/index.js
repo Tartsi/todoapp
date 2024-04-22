@@ -18,12 +18,6 @@ function checkContent() {
         return false;
     }
 
-    if (password.length < 4) {
-        alert("Password not 4 characters!");
-        resetValues();
-        return false;
-    }
-
     let maliciousCharacters = /[<>!;,'"]/;
 
     if (maliciousCharacters.test(username)) {
