@@ -24,7 +24,9 @@ function checkContent() {
         return false;
     }
 
-    if (username.includes(";") || username.includes("'") || username.includes("--")) {
+    let maliciousCharacters = /[<>!;,'"]/;
+
+    if (maliciousCharacters.test(username)) {
         alert("Invalid characters in username!");
         resetValues();
         return false;
