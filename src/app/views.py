@@ -12,3 +12,16 @@ def index(request):
     """
 
     return render(request, 'index.html')
+
+
+def register(request):
+    """Returns the registration-page of the application
+
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Renders and returns the 'register.html' template
+    """
+
+    return render(request, 'register.html')
