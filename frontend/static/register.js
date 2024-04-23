@@ -34,6 +34,14 @@ function checkRegister() {
         return false;
     }
     
+    let specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+    if (!specialCharacters.test(password)) {
+        alert("Password must include atleast 1 special character!");
+        resetValues();
+        return false;
+    }
+
     if (password !== confirm_password) {
         alert("Passwords do not match!");
         resetValues();
