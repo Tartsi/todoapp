@@ -12,16 +12,26 @@
     <div>
         <a href="/">Return</a>
         <h2>Create Your Account</h2>
-        <form method="post" action="">
+        <form method="post" action="/add_user/">
             {% csrf_token %}
-            <label for="new_username">Username:</label>
-            <input type="text" id="new_username" name="new_username" required>
 
-            <label for="new_password">Password:</label>
-            <input type="password" id="new_password" name="new_password" required>
+            <label for="id_username">Username:</label>
+            <input type="text" id="id_username" name="username">
+            {% if form.errors.username %}
+                <p class="error">{{ form.errors.username.0 }}</p>
+            {% endif %}
 
-            <label for="confirm_password">Confirm Password:</label>
-            <input type="password" id="confirm_password" name="confirm_password" required>
+            <label for="id_password1">Password:</label>
+            <input type="password" id="id_password1" name="password1" required>
+            {% if form.errors.password1 %}
+                <p class="error">{{ form.errors.password1.0 }}</p>
+            {% endif %}
+
+            <label for="id_password2">Confirm Password:</label>
+            <input type="password" id="id_password2" name="password2" required>
+            {% if form.errors.password2 %}
+                <p class="error">{{ form.errors.password2.0 }}</p>
+            {% endif %}
 
             <button type="submit" onclick="return checkRegister()">Register</button>
         </form>

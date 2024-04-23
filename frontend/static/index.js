@@ -1,5 +1,9 @@
 'use strict';
 
+function userCreated() {
+    alert("User created successfully");
+}
+
 function checkContent() {
     
     // Basic content check for login-form

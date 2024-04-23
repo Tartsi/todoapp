@@ -4,14 +4,14 @@ function checkRegister() {
     
     // Basic content check for new users
 
-    const username = document.querySelector("#new_username").value.trim();
-    const password = document.querySelector("#new_password").value.trim();
-    const confirm_password = document.querySelector("#confirm_password").value.trim();
+    const username = document.querySelector("#id_username").value.trim();
+    const password = document.querySelector("#id_password1").value.trim();
+    const confirm_password = document.querySelector("#id_password2").value.trim();
 
     function resetValues() {
-        document.querySelector("#new_username").value = "";
-        document.querySelector("#new_password").value = "";
-        document.querySelector("#confirm_password").value = "";
+        document.querySelector("#id_username").value = "";
+        document.querySelector("#id_password1").value = "";
+        document.querySelector("#id_password2").value = "";
     }
 
     if (username.length < 4) {

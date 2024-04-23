@@ -27,5 +27,13 @@
 
     <script src="/static/index.js"></script>
 
+    {% if created %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                userCreated();
+            });
+        </script>
+    {% endif %}
+
 </body>
 </html>
