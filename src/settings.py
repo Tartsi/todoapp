@@ -86,6 +86,9 @@ DATABASES = {
     #     'HOST': os.getenv('DB_HOST'),
     #     'PORT': os.getenv('DB_PORT'),
     # }
+    # Make sure the database-server is running
+    # Setup each value inside your own .env-file for the MySQL
+    # For example: DB_NAME = mysqldatabasename
 }
 
 
