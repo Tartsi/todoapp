@@ -11,7 +11,8 @@ disable=raw-checker-failed,
         too-few-public-methods,
         missing-module-docstring,
         missing-class-docstring,
-        function-redefined
+        function-redefined,
+        unused-import
 
 [FORMAT]
 max-line-length = 100
