@@ -13,38 +13,38 @@ header {
     margin-bottom: 20px;
 }
 
-.return-link, .logout-button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.return-link:hover, .logout-button:hover {
-    background-color: #2980b9;
-}
-
 h1 {
     color: #2c3e50;
 }
 
-main {
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-list, .task-add {
     background-color: white;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 48%;
 }
 
 #todo-list {
-    min-height: 150px; /* Provides a minimum height for aesthetic purposes */
+    min-height: 150px;
 }
 
 .no-tasks {
     color: #777;
     font-style: italic;
+}
+
+textarea#new-task {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .add-task-button {
@@ -56,9 +56,22 @@ main {
     cursor: pointer;
     display: block;
     width: 100%;
-    margin-top: 20px;
 }
 
 .add-task-button:hover {
     background-color: #27ae60;
+}
+
+.logout-button, .return-link {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.logout-button:hover, .return-link:hover {
+    background-color: #2980b9;
 }
