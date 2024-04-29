@@ -1,16 +1,19 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+.main-content {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
 }
 
 h1 {
@@ -20,58 +23,40 @@ h1 {
 .container {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
-.task-list, .task-add {
+.task-list, .task-completed {
+    flex: 1;
+    padding: 20px;
     background-color: white;
-    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    width: 48%;
+    margin-right: 10px;
 }
 
-#todo-list {
-    min-height: 150px;
-}
-
-.no-tasks {
-    color: #777;
-    font-style: italic;
-}
-
-textarea#new-task {
-    width: 100%;
-    margin-bottom: 10px;
+.add-task-button, .clear-task-button {
+    width: 30%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.add-task-button {
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-}
-
-.add-task-button:hover {
-    background-color: #27ae60;
-}
-
-.logout-button, .return-link {
+    margin-top: 10px;
     background-color: #3498db;
     color: white;
-    padding: 10px 20px;
-    text-decoration: none;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.logout-button:hover, .return-link:hover {
+.logout-button {
+    width: 10%;
+    padding: 10px;
+    margin-left: 33em;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-task-button:hover, .logout-button:hover, .clear-task-button:hover {
     background-color: #2980b9;
 }
