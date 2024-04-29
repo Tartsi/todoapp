@@ -24,7 +24,7 @@ h3 {
 /* Form Styling */
 div {
     background-color: white;
-    width: 500px;
+    width: 600px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -54,7 +54,8 @@ button {
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
+    width: 50%;
+    margin-left: 11em;
 }
 
 button:hover {
@@ -71,7 +72,8 @@ a:hover {
 }
 
 /* Error Message Styling */
-p {
-    color: red;
+.error {
+    color: rgb(255, 0, 0);
     font-size: 0.9em;
+    margin-top: -5px;
 }

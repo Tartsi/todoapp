@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
 
 User = get_user_model()
@@ -70,3 +70,34 @@ def add_user(request):
     else:
         form = UserCreationForm()
         return render(request, 'register.html', {'form': form})
+
+
+def login_user(request):
+
+    # FIX THE ERROR MESSAGING HERE!
+
+    if request.method == 'POST':
+
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return render(request, 'listings.html')
+            else:
+                messages.error(request, "Invalid username or password")
+                return render(request, 'index.html', {'form': form})
+        else:
+            for field in form.errors:
+                for error in form.errors[field]:
+                    messages.error(request, error)
+
+            return render(request, 'index.html', {'form': form})
+    else:
+        form = AuthenticationForm()
+        return render(request, 'index.html', {'form': form})
