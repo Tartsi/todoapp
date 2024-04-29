@@ -7,21 +7,26 @@
     <link rel="stylesheet" href="/static/listings.css">
 </head>
 <body>
-    
-    <h3><a href="/">Return</a></h3>
-    <h1>Hello World!</h1>
+    <header>
+        <button onclick="logout()" class="logout-button">Logout</button>
+        {% if user.is_authenticated %}
+            <h1>Welcome, {{ user.username }}!</h1>
+        {% else %}
+            <h1>Not Logged In</h1>
+        {% endif %}
+    </header>
 
-    <!-- PLACEHOLDER PAGE -->
+    <main>
+        <section id="todo-list">
+            <!-- Dynamic list of tasks will be inserted here -->
+            <p class="no-tasks">No tasks added yet!</p>
+        </section>
 
-    <!-- Logout button top left corner -->
-    <!-- Welcome user here -->
+        <button onclick="showAddTaskForm()" class="add-task-button">Add New Task</button>
+    </main>
 
-    <!-- List potential (added) tasks here -->
-    <!-- If no tasks exist, display proper message -->
-
-    <!-- Option to add an task at the bottom-->
-
-    <script src="/static/listings.js"></script>
-
+    <footer>
+        <script src="/static/listings.js"></script>
+    </footer>
 </body>
 </html>
