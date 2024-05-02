@@ -73,8 +73,15 @@ def add_user(request):
 
 
 def login_user(request):
+    """Logins a registered user to the application.
 
-    # FIX THE ERROR MESSAGING HERE!
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Returns login-page with error messages if
+        login unsuccessful, else returns todo-page of the user
+    """
 
     if request.method == 'POST':
 
@@ -89,15 +96,17 @@ def login_user(request):
             if user is not None:
                 login(request, user)
                 return render(request, 'listings.html')
-            else:
-                messages.error(request, "Invalid username or password")
-                return render(request, 'index.html', {'form': form})
-        else:
-            for field in form.errors:
-                for error in form.errors[field]:
-                    messages.error(request, error)
 
+            # Show appropriate error messages if login unsuccessful
+            messages.error(request, "Invalid username or password")
             return render(request, 'index.html', {'form': form})
-    else:
-        form = AuthenticationForm()
+
+        # Show appropriate error messages if login unsuccessful
+        for field in form.errors:
+            for error in form.errors[field]:
+                messages.error(request, error)
+
         return render(request, 'index.html', {'form': form})
+
+    form = AuthenticationForm()
+    return render(request, 'index.html', {'form': form})

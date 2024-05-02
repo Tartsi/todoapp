@@ -1,6 +1,6 @@
 [MASTER]
 
-ignore=tests
+ignore=tests,migrations
 
 [MESSAGE CONTROL]
 
@@ -12,7 +12,8 @@ disable=raw-checker-failed,
         missing-module-docstring,
         missing-class-docstring,
         function-redefined,
-        unused-import
+        unused-import,
+        invalid-str-returned
 
 [FORMAT]
 max-line-length = 100
