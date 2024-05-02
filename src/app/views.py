@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
+from .models import Task
 
 User = get_user_model()
 
@@ -95,6 +96,9 @@ def login_user(request):
 
             if user is not None:
                 login(request, user)
+
+                # TODO: Get user tasks here
+
                 return render(request, 'listings.html')
 
             # Show appropriate error messages if login unsuccessful

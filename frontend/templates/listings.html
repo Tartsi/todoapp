@@ -23,6 +23,14 @@
                     <button onclick="addTask()" class="add-task-button">Add New Task</button>
                 </section>
 
+                <div class="modal hidden">
+                    <form action="">
+                        {% csrf_token %}
+                        <!-- TODO: Finish Modaling -->
+                        <!-- TODO: Task Adding -->
+                    </form>
+                </div>
+
                 <section class="task-completed">
                     <p class="completed-tasks">Completed tasks displayed here!</p>
                     <button onclick="return clearTask()" class="clear-task-button">Clear</button>
