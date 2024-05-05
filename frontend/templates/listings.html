@@ -8,7 +8,10 @@
 </head>
 <body>
     <div class="main-content">
-        <button onclick="logout()" class="logout-button">Logout</button>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
         {% if user.is_authenticated %}
             <h1>{{ user.username }}'s Tasks:</h1>
         {% else %}
