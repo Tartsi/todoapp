@@ -42,5 +42,13 @@
         </script>
     {% endif %}
 
+    {% if login_first %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                loginFirst();
+            });
+        </script>
+    {% endif %}
+
 </body>
 </html>

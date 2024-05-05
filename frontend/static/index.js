@@ -4,6 +4,10 @@ function userCreated() {
     alert("User created successfully");
 }
 
+function loginFirst() {
+    alert("You must be logged in to access this page!");
+}
+
 function checkContent() {
     
     // Basic content check for login-form

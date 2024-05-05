@@ -17,10 +17,13 @@ def index(request):
         HttpResponse: Renders and returns the 'index.html' template
     """
 
+    if 'next' in request.GET:
+        return render(request, 'index.html', {'login_first': True})
+
     return render(request, 'index.html')
 
 
-def register(request):
+def register_view(request):
     """Returns the registration-page of the application
 
     Args:
