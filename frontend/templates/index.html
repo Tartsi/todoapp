@@ -11,7 +11,7 @@
 
     <div>
         <h2>Login</h2>
-        <form method="post" action="login_user">
+        <form method="post" action="login_view">
             {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" value="{{ form.username.value|default_if_none:'' }}" required>
@@ -29,7 +29,7 @@
                 {% endif %}
             <button type="submit">Login</button>
         </form>
-        <h3>No account yet? Consider registering <a href="/register">here!</a></h3>
+        <h3>No account yet? Consider registering <a href="/register_view">here!</a></h3>
     </div>
 
     <script src="/static/index.js"></script>
