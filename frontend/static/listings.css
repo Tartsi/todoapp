@@ -35,7 +35,7 @@ h1 {
     margin-right: 10px;
 }
 
-.add-task-button, .clear-task-button {
+.add-task-button, .clear-task-button, .clear-listed-task-button {
     width: 30%;
     padding: 10px;
     margin-top: 10px;
@@ -56,6 +56,17 @@ h1 {
     cursor: pointer;
 }
 
+.close-modal-button {
+    position: absolute;
+    top: 1.2rem;
+    right: 2rem;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
 .add-task-button:hover, .logout-button:hover, .clear-task-button:hover {
     background-color: #2980b9;
 }
@@ -71,10 +82,10 @@ h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 20%;
   
     background-color: white;
-    padding: 6rem;
+    padding: 2rem;
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;

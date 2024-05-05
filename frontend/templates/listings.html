@@ -21,18 +21,31 @@
         <main>
             <div class="container">
                 <section id="todo-list" class="task-list">
-                    <p class="no-tasks">No tasks added yet!</p>
+                    {% if tasks %}
+                        <ul class="task-list">
+                            {% for task in tasks %}
+                                <li>{{ task }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p class="no-tasks">No tasks added yet!</p>
+                    {% endif %}
                     <!-- TODO: Add modal to add-task-button! -->
                     <button onclick="addTask()" class="add-task-button">Add New Task</button>
+                    <button onclick="return clearListedTasks()" class="clear-listed-task-button">Clear tasks</button>
                 </section>
 
                 <div class="modal hidden">
-                    <form action="">
+                    <button onclick="closeTask()" class="close-modal-button">X</button>
+                    <form method='post' action="/add_task">
                         {% csrf_token %}
-                        <!-- TODO: Finish Modaling -->
-                        <!-- TODO: Task Adding -->
+                        <label for="task-description"></label>
+                        <input type="text" id="task-description" name="description" placeholder="Describe your task here">
+                        <button type="submit">Add</button>
                     </form>
                 </div>
+
+                <div class="overlay hidden"></div>
 
                 <section class="task-completed">
                     <p class="completed-tasks">Completed tasks displayed here!</p>

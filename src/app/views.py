@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model, authenticate
 from django.contrib.auth import login as auth_login
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib import messages
+from django.shortcuts import render, redirect
 from .models import Task
-from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
 
@@ -133,3 +133,32 @@ def add_user(request):
     else:
         form = UserCreationForm()
         return render(request, 'register.html', {'form': form})
+
+
+def add_task(request):
+    """Adds a task to the database.
+
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Renders and returns the appropriate
+        page regarding the outcome of the task creation process
+    """
+
+    if request.method == 'POST':
+
+        task_description = request.POST.get('description')
+        task = Task(user=request.user, task=task_description)
+
+        try:
+            task.save()
+            print('Task added to the database successfully')
+            return redirect('listings_view')
+
+        except Exception as error:
+            messages.error(request, str(error))
+            print('Error creating task:', str(error))
+            return render(request, 'listings.html')
+
+    return redirect('listings_view')
