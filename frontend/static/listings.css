@@ -1,3 +1,5 @@
+/* MAIN CONTENT STYLINGS */
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
@@ -35,6 +37,8 @@ h1 {
     margin-right: 10px;
 }
 
+/* BUTTONS */
+
 .add-task-button, .clear-task-button, .clear-listed-task-button {
     width: 30%;
     padding: 10px;
@@ -67,11 +71,47 @@ h1 {
     background: none;
 }
 
-.add-task-button:hover, .logout-button:hover, .clear-task-button:hover {
+.table-button {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-task-button:hover, .logout-button:hover, .clear-task-button:hover, .table-button:hover {
     background-color: #2980b9;
 }
 
-/* -------------------------- */
+/* TABLE STYLINGS */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #3498db;
+    color: white;
+}
+
+thead th {
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: left;
+}
+
 /* CLASSES TO MAKE MODAL WORK */
 .hidden {
     display: none;
