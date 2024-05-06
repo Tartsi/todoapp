@@ -17,13 +17,10 @@ function closeTask() {
 function clearListedTasks() {
 
     if (confirm("Are you sure you want to clear all listed tasks?")) {
-        console.log("Clearing all tasks");
         return true;
     }
     
-    console.log("Not clearing tasks");
     return false;
-
 }
 
 overlay.addEventListener('click', closeTask);

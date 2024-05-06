@@ -51,8 +51,10 @@
                         <p class="no-tasks">No tasks added yet!</p>
                     {% endif %}
                     <button onclick="addTask()" class="add-task-button">Add New Task</button>
-                    <!-- FINSIH CLEAR LISTEDTASKS -->
-                    <button onclick="return clearListedTasks()" class="clear-listed-task-button">Clear tasks</button>
+                    <form method='post' action="/clear_listed_task">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return clearListedTasks()" class="clear-listed-task-button">Clear tasks</button>
+                    </form>
                 </section>
 
                 <div class="modal hidden">

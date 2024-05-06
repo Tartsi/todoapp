@@ -159,6 +159,24 @@ def add_task(request):
         except Exception as error:
             messages.error(request, str(error))
             print('Error creating task:', str(error))
-            return render(request, 'listings.html')
+            return redirect('listings_view')
+
+    return redirect('listings_view')
+
+
+def clear_listed_task(request):
+    """Clears all the listed tasks of the logged-in user.
+
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Redirects to the listings page
+        after clearing all tasks from database
+    """
+
+    if request.method == 'POST':
+        Task.objects.filter(user=request.user).delete()
+        return redirect('listings_view')
 
     return redirect('listings_view')
