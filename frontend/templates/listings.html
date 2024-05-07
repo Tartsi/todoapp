@@ -36,9 +36,19 @@
                                         <td>{{ task.task }}</td>
                                         <td>{{ task.created_at|date:"d F" }}</td>
                                         <td>
-                                            <button class="table-button">Edit</button>
-                                            <button class="table-button">Delete</button>
-                                            <button class="table-button">Complete</button>
+                                            <form method="post" action="/edit_task">
+                                                {% csrf_token %}
+                                                <button class="table-button">Edit</button>
+                                            </form>
+                                            <form method="post" action="/delete_task">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="task_id" value="{{ task.id }}">
+                                                <button class="table-button" onclick="return deleteTask()">Delete</button>
+                                            </form>
+                                            <form method="post" action="/complete_task">
+                                                {% csrf_token %}
+                                                <button class="table-button">Complete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     <tr>
@@ -61,7 +71,6 @@
                     <button onclick="closeTask()" class="close-modal-button">X</button>
                     <form method='post' action="/add_task">
                         {% csrf_token %}
-                        <!-- OPTIONAL CSS-MODIFICATIONS HERE -->
                         <label for="task-description"></label>
                         <input type="text" id="task-description" name="description" placeholder="Describe your task here">
                         <button type="submit" class="add-task-button">Add</button>

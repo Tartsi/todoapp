@@ -164,6 +164,26 @@ def add_task(request):
     return redirect('listings_view')
 
 
+def delete_task(request):
+    """Deletes a task from the database.
+
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Redirects to the listings page
+        after deleting the task
+    """
+
+    if request.method == 'POST':
+
+        task_id = request.POST.get('task_id')
+        Task.objects.filter(id=task_id).delete()
+        return redirect('listings_view')
+
+    return redirect('listings_view')
+
+
 def clear_listed_task(request):
     """Clears all the listed tasks of the logged-in user.
 
