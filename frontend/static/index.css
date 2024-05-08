@@ -24,7 +24,7 @@ h3 {
 /* Form Styling */
 div {
     background-color: white;
-    width: 600px;
+    width: 640px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -75,5 +75,6 @@ a:hover {
 .error {
     color: rgb(255, 0, 0);
     font-size: 0.9em;
+    font-weight: bold;
     margin-top: -5px;
 }
