@@ -91,8 +91,9 @@ def listings_view(request):
     """
 
     # Retrieve all tasks of the logged-in user
-    tasks = Task.objects.filter(user=request.user)
-    return render(request, 'listings.html', {'tasks': tasks})
+    tasks = Task.objects.filter(user=request.user, completed=False)
+    completed_tasks = Task.objects.filter(user=request.user, completed=True)
+    return render(request, 'listings.html', {'tasks': tasks, 'completed_tasks': completed_tasks})
 
 
 def add_user(request):
@@ -142,8 +143,8 @@ def add_task(request):
         request (HttpRequest): HTTP-request object from the browser
 
     Returns:
-        HttpResponse: Renders and returns the appropriate
-        page regarding the outcome of the task creation process
+        HttpResponse: Redirects the page with after adding the task if succesful,
+        else returns the listings page with an error message
     """
 
     if request.method == 'POST':
@@ -159,6 +160,36 @@ def add_task(request):
         except Exception as error:
             messages.error(request, str(error))
             print('Error creating task:', str(error))
+            return redirect('listings_view')
+
+    return redirect('listings_view')
+
+
+def add_task_to_complete(request):
+    """Adds a task to the completed tasks of the logged-in user.
+
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Redirect to the listings-page after adding the task
+        to the completed tasks
+    """
+
+    if request.method == 'POST':
+
+        task_id = request.POST.get('task_id')
+        task = Task.objects.get(id=task_id)
+        task.completed = True
+
+        try:
+            task.save()
+            print('Task added to completed tasks successfully')
+            return redirect('listings_view')
+
+        except Exception as error:
+            messages.error(request, str(error))
+            print('Error completing task:', str(error))
             return redirect('listings_view')
 
     return redirect('listings_view')

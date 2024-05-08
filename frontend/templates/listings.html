@@ -45,8 +45,9 @@
                                                 <input type="hidden" name="task_id" value="{{ task.id }}">
                                                 <button class="table-button" onclick="return deleteTask()">Delete</button>
                                             </form>
-                                            <form method="post" action="/complete_task">
+                                            <form method="post" action="/add_task_to_complete">
                                                 {% csrf_token %}
+                                                <input type="hidden" name="task_id" value="{{ task.id }}">
                                                 <button class="table-button">Complete</button>
                                             </form>
                                         </td>
@@ -95,7 +96,11 @@
                                     <td>{{ completed_task.task }}</td>
                                     <td>{{ completed_task.completed_at|date:"d F" }}</td>
                                     <td>
-                                        <button class="table-button">Delete</button>
+                                        <form method="post" action="/delete_task">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="task_id" value="{{ completed_task.id }}">
+                                            <button class="table-button" onclick="return deleteTask()">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 <tr>
