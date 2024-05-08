@@ -10,7 +10,8 @@ from .views import (
     add_task,
     clear_listed_task,
     clear_completed_task,
-    add_task_to_complete
+    add_task_to_complete,
+    edit_task
 )
 
 urlpatterns = [
@@ -27,4 +28,5 @@ urlpatterns = [
          name='clear_completed_tasks'),
     path('add_task_to_complete', add_task_to_complete,
          name='add_task_to_complete'),
+    path('edit_task', edit_task, name='edit_task'),
 ]

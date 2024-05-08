@@ -39,7 +39,7 @@
                                         <td>
                                             <form method="post" action="/edit_task">
                                                 {% csrf_token %}
-                                                <button class="table-button">Edit</button>
+                                                <button class="table-button", onclick="editTask()">Edit</button>
                                             </form>
                                             <form method="post" action="/delete_task">
                                                 {% csrf_token %}
@@ -61,22 +61,34 @@
                         </table>
                         <form method='post' action="/clear_listed_task">
                             {% csrf_token %}
-                            <button type="submit" onclick="return clearListedTasks()" class="clear-listed-task-button">Clear tasks</button>
+                            <button type="submit" onclick="return clearListedTasks()" class="clear-button">Clear tasks</button>
                         </form>
                     {% else %}
                         <p class="no-tasks">No tasks added yet!</p>
                     {% endif %}
-                    <button onclick="addTask()" class="add-task-button">Add New Task</button>
+                    <button onclick="addTask()" class="task-button">Add New Task</button>
 
                 </section>
 
+                <!-- FIX MODALING -->
                 <div class="modal hidden">
                     <button onclick="closeTask()" class="close-modal-button">X</button>
                     <form method='post' action="/add_task">
                         {% csrf_token %}
                         <label for="task-description"></label>
                         <input type="text" id="task-description" name="description" placeholder="Describe your task here">
-                        <button type="submit" class="add-task-button">Add</button>
+                        <button type="submit" class="task-button">Add</button>
+                    </form>
+                </div>
+
+                <div class="modal hidden">
+                    <button onclick="closeTask()" class="close-modal-button">X</button>
+                    <form method='post' action="">
+                        {% csrf_token %}
+                        <label for="task-description"></label>
+                        <!-- <input type="hidden" name="task_id" value="{{ task.id }}"> -->
+                        <input type="text" id="task-description" name="new_task_description" placeholder="Rewrite your task here">
+                        <button type="submit" class="task-button">Edit</button>
                     </form>
                 </div>
 
@@ -113,10 +125,10 @@
                     </table>
                     <form method='post' action="/clear_completed_task">
                         {% csrf_token %}
-                        <button onclick="return clearCompletedTasks()" class="clear-task-button">Clear</button>
+                        <button onclick="return clearCompletedTasks()" class="clear-button">Clear</button>
                     </form>
                 {% else %}
-                    <p class="no-tasks">No tasks completed yet!</p>
+                    <p class="no-4s">No cs completed yet!</p>
                 {% endif %}
                 </section>
             </div>

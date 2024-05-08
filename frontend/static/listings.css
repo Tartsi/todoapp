@@ -45,7 +45,7 @@ h1 {
 
 /* BUTTONS */
 
-.add-task-button, .clear-task-button, .clear-listed-task-button {
+.task-button, .clear-button {
     width: 30%;
     padding: 10px;
     margin-top: 10px;
@@ -79,7 +79,7 @@ h1 {
     cursor: pointer;
 }
 
-.add-task-button:hover, .logout-button:hover, .clear-task-button:hover, .table-button:hover {
+.task-button:hover, .logout-button:hover, .clear-button:hover, .table-button:hover {
     background-color: #2980b9;
 }
 
