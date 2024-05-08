@@ -23,6 +23,16 @@ function deleteTask() {
     return false;
 }
 
+function clearCompletedTasks() {
+
+    if (confirm("Are you sure you want to clear all completed tasks?")) {
+        return true;
+    }
+
+    return false;
+
+}
+
 function clearListedTasks() {
 
     if (confirm("Are you sure you want to clear all listed tasks?")) {

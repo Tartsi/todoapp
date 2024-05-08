@@ -80,10 +80,37 @@
                 <div class="overlay hidden"></div>
 
                 <section class="task-completed">
-                    <p class="completed-tasks">Completed tasks displayed here!</p>
-                    <!-- ADD COMPLETED TASKS LISTING -->
-                    <!-- FINSIH CLEAR COMPLETED TASKS -->
-                    <button onclick="return clearTask()" class="clear-task-button">Clear</button>
+                    {% if completed_tasks %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Completed</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for completed_task in completed_tasks %}
+                                <tr>
+                                    <td>{{ completed_task.task }}</td>
+                                    <td>{{ completed_task.completed_at|date:"d F" }}</td>
+                                    <td>
+                                        <button class="table-button">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><hr></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="no-tasks">No tasks completed yet!</p>
+                {% endif %}
+                <form method='post' action="/clear_completed_task">
+                    {% csrf_token %}
+                    <button onclick="return clearCompletedTasks()" class="clear-task-button">Clear</button>
+                </form>
                 </section>
             </div>
         </main>

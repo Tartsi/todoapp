@@ -200,3 +200,21 @@ def clear_listed_task(request):
         return redirect('listings_view')
 
     return redirect('listings_view')
+
+
+def clear_completed_task(request):
+    """Clears all completed tasks of the logged-in user.
+
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Redirects to the listings page after clearing
+        all completed tasks from the database
+    """
+
+    if request.method == 'POST':
+        Task.objects.filter(user=request.user, completed=True).delete()
+        return redirect('listings_view')
+
+    return redirect('listings_view')
