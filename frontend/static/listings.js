@@ -14,6 +14,16 @@ function closeTask() {
     overlay.classList.add('hidden');
 }
 
+function completeTask() {
+
+    if (confirm("Are you sure you want to complete this task?")) {
+        return true;
+    }
+
+    return false;
+    
+}
+
 function deleteTask() {
 
     if (confirm("Are you sure you want to delete this task?")) {
