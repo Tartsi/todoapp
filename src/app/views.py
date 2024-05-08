@@ -143,8 +143,7 @@ def add_task(request):
         request (HttpRequest): HTTP-request object from the browser
 
     Returns:
-        HttpResponse: Redirects the page with after adding the task if succesful,
-        else returns the listings page with an error message
+        HttpResponse: Redirects to the listings-page after adding the task
     """
 
     if request.method == 'POST':
@@ -160,6 +159,36 @@ def add_task(request):
         except Exception as error:
             messages.error(request, str(error))
             print('Error creating task:', str(error))
+            return redirect('listings_view')
+
+    return redirect('listings_view')
+
+
+def edit_task(request):
+    """Edits a task in the database.
+
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
+
+    Returns:
+        HttpResponse: Redirects to the listings-page after editing the task
+    """
+
+    if request.method == 'POST':
+
+        task_id = request.POST.get('task_id')
+        new_task_description = request.POST.get('description')
+        task = Task.objects.get(id=task_id)
+        task.task = new_task_description
+
+        try:
+            task.save()
+            print('Task edited successfully')
+            return redirect('listings_view')
+
+        except Exception as error:
+            messages.error(request, str(error))
+            print('Error editing task:', str(error))
             return redirect('listings_view')
 
     return redirect('listings_view')
@@ -223,7 +252,7 @@ def clear_listed_task(request):
 
     Returns:
         HttpResponse: Redirects to the listings page
-        after clearing all tasks from database
+        after clearing all tasks
     """
 
     if request.method == 'POST':
@@ -241,7 +270,7 @@ def clear_completed_task(request):
 
     Returns:
         HttpResponse: Redirects to the listings page after clearing
-        all completed tasks from the database
+        all completed tasks
     """
 
     if request.method == 'POST':
