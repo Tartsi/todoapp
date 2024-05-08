@@ -1,6 +1,17 @@
 from django.urls import path
 from django.contrib.auth.views import logout_then_login
-from .views import delete_task, login, register_view, add_user, login_view, listings_view, add_task, clear_listed_task, clear_completed_task, add_task_to_complete
+from .views import (
+    delete_task,
+    login,
+    register_view,
+    add_user,
+    login_view,
+    listings_view,
+    add_task,
+    clear_listed_task,
+    clear_completed_task,
+    add_task_to_complete
+)
 
 urlpatterns = [
     path('', login, name='login'),

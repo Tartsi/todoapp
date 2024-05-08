@@ -13,7 +13,8 @@ disable=raw-checker-failed,
         missing-class-docstring,
         function-redefined,
         unused-import,
-        invalid-str-returned
+        invalid-str-returned,
+        no-member
 
 [FORMAT]
 max-line-length = 100
