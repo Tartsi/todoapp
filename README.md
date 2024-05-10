@@ -14,7 +14,7 @@
 - Persistent data storage; Either Django's base SQLite3 or MySQL that has a base for it setup in settings.py (commented out)
 - ~~Testing; Unittests; using Django's built-in 'TestCase' class - possibly intergration tests~~ No tests in this project
 
-### Setup:
+### Install:
 
 Clone the project "git clone https://github.com/Tartsi/todoapp"
 
@@ -29,6 +29,28 @@ Enter poetry shell
 ```bash
 poetry shell
 ```
+### Setup:
+
+Create and setup your .env-file where you declare:
+
+DEBUG = True
+SECRET_KEY = yoursecretkeyhere
+
+Run migrations
+
+```bash
+python/python3 manage.py makemigrations
+then
+python/python3 manage.py migrate
+```
+
+Run the server
+
+```bash
+python/python3 manage.py runserver
+```
+
+Now you can use the application!
 
 ### Usage
 
