@@ -33,9 +33,9 @@ poetry shell
 
 Create and setup your .env-file where you declare:
 
-DEBUG = True
-SECRET_KEY = yoursecretkeyhere
-(Optional MySQL database setup files)
+- DEBUG = True
+- SECRET_KEY = yoursecretkeyhere
+- (Optional MySQL database setup files)
 
 Run migrations
 
