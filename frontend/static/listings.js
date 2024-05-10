@@ -1,18 +1,36 @@
 'use strict';
 
-const modal = document.querySelector('.modal');
+const addTaskModal = document.getElementById('addTaskModal');
+const editTaskModal = document.getElementById('editTaskModal');
 const overlay = document.querySelector('.overlay');
 
 
 function addTask() {
-    modal.classList.remove('hidden');
+    addTaskModal.classList.remove('hidden');
     overlay.classList.remove('hidden');
+    overlay.addEventListener('click', closeAddTask);
 }
 
-function closeTask() {
-    modal.classList.add('hidden');
-    overlay.classList.add('hidden');
+function editTask(taskId) {
+    document.getElementById('edit-task-id').value = taskId;
+    console.log("Received ID: " + taskId);
+    editTaskModal.classList.remove('hidden');
+    overlay.classList.remove('hidden');
+    overlay.addEventListener('click', closeEditTask);
 }
+
+function closeAddTask() {
+    addTaskModal.classList.add('hidden');
+    overlay.classList.add('hidden');
+    overlay.removeEventListener('click', closeAddTask);
+}
+
+function closeEditTask() {
+    editTaskModal.classList.add('hidden');
+    overlay.classList.add('hidden');
+    overlay.removeEventListener('click', closeEditTask);
+}
+
 
 function completeTask() {
 
@@ -52,11 +70,11 @@ function clearListedTasks() {
     return false;
 }
 
-overlay.addEventListener('click', closeTask);
-
 document.addEventListener('keydown', function (e) {
 
-    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-      closeTask();
+    if (e.key === 'Escape' && !addTaskModal.classList.contains('hidden')) {
+      closeAddTask();
+    } else if (e.key === 'Escape' && !editTaskModal.classList.contains('hidden')) {
+      closeEditTask();
     }
 });

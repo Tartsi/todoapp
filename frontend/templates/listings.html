@@ -37,10 +37,7 @@
                                         <td>{{ task.task }}</td>
                                         <td>{{ task.created_at|date:"d F" }}</td>
                                         <td>
-                                            <form method="post" action="/edit_task">
-                                                {% csrf_token %}
-                                                <button class="table-button", onclick="editTask()">Edit</button>
-                                            </form>
+                                            <button class="table-button", onclick="editTask('{{ task.id }}')">Edit</button>
                                             <form method="post" action="/delete_task">
                                                 {% csrf_token %}
                                                 <input type="hidden" name="task_id" value="{{ task.id }}">
@@ -64,15 +61,14 @@
                             <button type="submit" onclick="return clearListedTasks()" class="clear-button">Clear tasks</button>
                         </form>
                     {% else %}
-                        <p class="no-tasks">No tasks added yet!</p>
+                        <p>No tasks added yet!</p>
                     {% endif %}
                     <button onclick="addTask()" class="task-button">Add New Task</button>
 
                 </section>
 
-                <!-- FIX MODALING -->
-                <div class="modal hidden">
-                    <button onclick="closeTask()" class="close-modal-button">X</button>
+                <div id="addTaskModal" class="modal hidden">
+                    <button onclick="closeAddTask()" class="close-modal-button">X</button>
                     <form method='post' action="/add_task">
                         {% csrf_token %}
                         <label for="task-description"></label>
@@ -81,12 +77,12 @@
                     </form>
                 </div>
 
-                <div class="modal hidden">
-                    <button onclick="closeTask()" class="close-modal-button">X</button>
+                <div id="editTaskModal" class="modal hidden">
+                    <button onclick="closeEditTask()" class="close-modal-button">X</button>
                     <form method='post' action="">
                         {% csrf_token %}
                         <label for="task-description"></label>
-                        <!-- <input type="hidden" name="task_id" value="{{ task.id }}"> -->
+                        <input type="hidden" id="edit-task-id" name="task_id" value="0">
                         <input type="text" id="task-description" name="new_task_description" placeholder="Rewrite your task here">
                         <button type="submit" class="task-button">Edit</button>
                     </form>
@@ -128,7 +124,7 @@
                         <button onclick="return clearCompletedTasks()" class="clear-button">Clear</button>
                     </form>
                 {% else %}
-                    <p class="no-4s">No cs completed yet!</p>
+                    <p>No tasks completed yet!</p>
                 {% endif %}
                 </section>
             </div>
