@@ -256,7 +256,7 @@ def clear_listed_task(request):
     """
 
     if request.method == 'POST':
-        Task.objects.filter(user=request.user).delete()
+        Task.objects.filter(user=request.user, completed=False).delete()
         return redirect('listings_view')
 
     return redirect('listings_view')
