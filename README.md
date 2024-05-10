@@ -35,6 +35,7 @@ Create and setup your .env-file where you declare:
 
 DEBUG = True
 SECRET_KEY = yoursecretkeyhere
+(Optional MySQL database setup files)
 
 Run migrations
 
@@ -58,3 +59,5 @@ Now you can use the application!
 - Login with the created user
 - Now you can add, edit, delete or clear tasks as you wish!
 - Logout when done
+
+Project finished 10/05/2024
