@@ -165,31 +165,31 @@ def add_task(request):
 
 
 def edit_task(request):
-    #     """Edits a task in the database.
+    """Edits a task in the database.
 
-    #     Args:
-    #         request (HttpRequest): HTTP-request object from the browser
+    Args:
+        request (HttpRequest): HTTP-request object from the browser
 
-    #     Returns:
-    #         HttpResponse: Redirects to the listings-page after editing the task
-    #     """
+    Returns:
+        HttpResponse: Redirects to the listings-page after editing the task
+    """
 
-    #     if request.method == 'POST':
+    if request.method == 'POST':
 
-    #         task_id = request.POST.get('task_id')
-    #         new_task_description = request.POST.get('new_task_description')
-    #         task = Task.objects.get(id=task_id)
-    #         task.task = new_task_description
+        task_id = request.POST.get('task_id')
+        new_task_description = request.POST.get('new_task_description')
+        task = Task.objects.get(id=task_id)
+        task.task = new_task_description
 
-    #         try:
-    #             task.save()
-    #             print('Task edited successfully')
-    #             return redirect('listings_view')
+        try:
+            task.save()
+            print('Task edited successfully')
+            return redirect('listings_view')
 
-    #         except Exception as error:
-    #             messages.error(request, str(error))
-    #             print('Error editing task:', str(error))
-    #             return redirect('listings_view')
+        except Exception as error:
+            messages.error(request, str(error))
+            print('Error editing task:', str(error))
+            return redirect('listings_view')
 
     return redirect('listings_view')
 

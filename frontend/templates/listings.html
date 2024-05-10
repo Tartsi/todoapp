@@ -79,10 +79,10 @@
 
                 <div id="editTaskModal" class="modal hidden">
                     <button onclick="closeEditTask()" class="close-modal-button">X</button>
-                    <form method='post' action="">
+                    <form method='post' action="/edit_task">
                         {% csrf_token %}
                         <label for="task-description"></label>
-                        <input type="hidden" id="edit-task-id" name="task_id" value="0">
+                        <input type="hidden" id="edit-task-id" name="task_id" value="-1">
                         <input type="text" id="task-description" name="new_task_description" placeholder="Rewrite your task here">
                         <button type="submit" class="task-button">Edit</button>
                     </form>
