@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -127,6 +127,138 @@
                     <p>No tasks completed yet!</p>
                 {% endif %}
                 </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/listings.js"></script>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-List</title>
+    <link rel="stylesheet" href="/static/listings.css">
+</head>
+<body>
+    <header>
+        <h1>Todo App</h1>
+    </header>
+    <nav>
+        <button class="tab-button active" id="today">Today</button>
+        <button class="tab-button" id="completed">Completed</button>
+    </nav>
+    <div class="main-content">
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+        {% if user.is_authenticated %}
+            <h2>{{ user.username }}'s Tasks:</h2>
+        {% else %}
+            <h2>Not Logged In</h2>
+        {% endif %}
+        <h3>Tasks Remaining: {{ tasks|length }}</h3>
+
+        <div class="task-header">
+            <h2>Tasks</h2>
+            <button class="add-task-button" onclick="addTask()">+ Add Task</button>
+        </div>
+        <main>
+            <div class="container">
+                <section id="todo-list" class="task-list">
+                    {% if tasks %}
+                        <ul class="task-items">
+                            {% for task in tasks %}
+                                <li class="task-item">
+                                    <input type="checkbox" class="task-checkbox">
+                                    <span class="task-name">{{ task.task }}</span>
+                                    <span class="task-date">{{ task.created_at|date:"D M d Y" }}</span>
+                                    <button class="edit-button" onclick="editTask('{{ task.id }}')">✎</button>
+                                    <form method="post" action="/delete_task" class="inline-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                                        <button class="delete-button" onclick="return deleteTask()">🗑</button>
+                                    </form>
+                                    <form method="post" action="/add_task_to_complete" class="inline-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                                        <button class="complete-button" onclick="return completeTask()">✔️</button>
+                                    </form>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <form method='post' action="/clear_listed_task">
+                            {% csrf_token %}
+                            <button type="submit" onclick="return clearListedTasks()" class="clear-button">Clear tasks</button>
+                        </form>
+                    {% else %}
+                        <p>No tasks added yet!</p>
+                    {% endif %}
+                </section>
+            </div>
+
+                <div id="addTaskModal" class="modal hidden">
+                    <button onclick="closeAddTask()" class="close-modal-button">X</button>
+                    <form method='post' action="/add_task">
+                        {% csrf_token %}
+                        <label for="task-description"></label>
+                        <input type="text" id="task-description" name="description" placeholder="Describe your task">
+                        <button type="submit" class="task-button">Add</button>
+                    </form>
+                </div>
+
+                <div id="editTaskModal" class="modal hidden">
+                    <button onclick="closeEditTask()" class="close-modal-button">X</button>
+                    <form method='post' action="/edit_task">
+                        {% csrf_token %}
+                        <label for="task-description"></label>
+                        <input type="hidden" id="edit-task-id" name="task_id" value="-1">
+                        <input type="text" id="task-description" name="new_task_description" placeholder="Rewrite your task">
+                        <button type="submit" class="task-button">Edit</button>
+                    </form>
+                </div>
+
+                <div class="overlay hidden"></div>
+
+                <div class="container-completed hidden">
+                    <section class="task-completed">
+                        {% if completed_tasks %}
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Completed</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for completed_task in completed_tasks %}
+                                    <tr>
+                                        <td>{{ completed_task.task }}</td>
+                                        <td>{{ completed_task.completed_at|date:"d F" }}</td>
+                                        <td>
+                                            <form method="post" action="/delete_task" class="inline-form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="task_id" value="{{ completed_task.id }}">
+                                                <button class="delete-button" onclick="return deleteTask()">🗑</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <form method='post' action="/clear_completed_task">
+                            {% csrf_token %}
+                            <button onclick="return clearCompletedTasks()" class="clear-button">Clear</button>
+                        </form>
+                    {% else %}
+                        <p>No tasks completed yet!</p>
+                    {% endif %}
+                    </section>
+                </div>
             </div>
         </main>
     </div>
