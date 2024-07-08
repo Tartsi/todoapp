@@ -59,5 +59,3 @@ Now you can use the application!
 - Login with the created user
 - Now you can add, edit, delete or clear tasks as you wish!
 - Logout when done
-
-Project finished 10/05/2024
