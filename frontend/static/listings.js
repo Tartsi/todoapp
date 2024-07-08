@@ -2,8 +2,38 @@
 
 const addTaskModal = document.getElementById('addTaskModal');
 const editTaskModal = document.getElementById('editTaskModal');
+const todayContainer = document.querySelector('.container');
+const completedContainer = document.querySelector('.container-completed');
+const tabToday = document.getElementById('today');
+const tabCompleted = document.getElementById('completed');
 const overlay = document.querySelector('.overlay');
 
+
+function switchCompleted() {
+
+    if (tabToday.disabled) {
+        tabToday.disabled = false;
+    }
+
+    tabCompleted.classList.toggle('active');
+    tabToday.classList.toggle('active');
+    completedContainer.classList.toggle('hidden');
+    todayContainer.classList.toggle('hidden');
+    tabCompleted.disabled = true;
+}
+
+function switchToday() {
+
+    if (tabCompleted.disabled) {
+        tabCompleted.disabled = false;
+    }
+
+    tabToday.classList.toggle('active');
+    tabCompleted.classList.toggle('active');
+    todayContainer.classList.toggle('hidden');
+    completedContainer.classList.toggle('hidden');
+    tabToday.disabled = true;
+}
 
 function addTask() {
     addTaskModal.classList.remove('hidden');

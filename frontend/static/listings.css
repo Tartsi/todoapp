@@ -92,7 +92,10 @@ h3 {
 }
 
 .add-task-button {
+    display: block;
     padding: 10px 15px;
+    margin: 20px auto;
+    margin-bottom: 10px;
     background-color: #27ae60;
     color: white;
     border: none;
