@@ -1,31 +1,32 @@
 /* MAIN CONTENT STYLINGS */
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;  /* Changed from center to flex-start */
     height: 100vh;
 }
 
 .main-content {
     width: 90%;
     max-width: 1000px;
-    margin: auto;
+    margin-top: 20px;  /* Add some margin to the top for spacing */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 h1 {
     color: #2c3e50;
-}
-
-#mainh1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -37,7 +38,7 @@ h1 {
 .task-list, .task-completed {
     flex: 1;
     padding: 20px;
-    background-color: white;
+    background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin-right: 10px;
@@ -45,42 +46,25 @@ h1 {
 
 /* BUTTONS */
 
-.task-button, .clear-button {
-    width: 30%;
-    padding: 10px;
-    margin-top: 10px;
+.task-button, .clear-button, .logout-button, .table-button {
+    padding: 10px 15px;
+    margin-top: 5px;
     background-color: #3498db;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.logout-button {
-    width: 10%;
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-}
-
-.table-button {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
 }
 
 .task-button:hover, .logout-button:hover, .clear-button:hover, .table-button:hover {
     background-color: #2980b9;
+}
+
+.logout-button {
+    display: block;
+    margin: 20px auto;
 }
 
 /* TABLE STYLINGS */
@@ -88,6 +72,7 @@ h1 {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
 thead {
@@ -98,10 +83,16 @@ thead {
 thead th {
     padding: 10px;
     text-align: left;
+    font-weight: normal;
+    font-size: 1em;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
 }
 
 tbody td {
@@ -109,25 +100,29 @@ tbody td {
     text-align: left;
 }
 
-/* CLASSES TO MAKE MODAL WORK */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* MODAL CSS-STYLING */
+
 .hidden {
     display: none;
-  }
-  
+}
+
 .modal {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20%;
-  
+    width: 10%;
     background-color: white;
     padding: 2rem;
     border-radius: 5px;
     box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
     z-index: 10;
 }
-  
+
 .overlay {
     position: absolute;
     top: 0;
@@ -139,16 +134,15 @@ tbody td {
     z-index: 5;
 }
 
-/* MODAL CSS-STYLING */
-
 #task-description {
     display: block;
     width: 85%;
     height: 50%;
     margin-bottom: 10px;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #333;
-    border: 2px solid #000;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .close-modal-button {

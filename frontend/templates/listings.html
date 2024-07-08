@@ -72,7 +72,7 @@
                     <form method='post' action="/add_task">
                         {% csrf_token %}
                         <label for="task-description"></label>
-                        <input type="text" id="task-description" name="description" placeholder="Describe your task here">
+                        <input type="text" id="task-description" name="description" placeholder="Describe your task">
                         <button type="submit" class="task-button">Add</button>
                     </form>
                 </div>
@@ -83,7 +83,7 @@
                         {% csrf_token %}
                         <label for="task-description"></label>
                         <input type="hidden" id="edit-task-id" name="task_id" value="-1">
-                        <input type="text" id="task-description" name="new_task_description" placeholder="Rewrite your task here">
+                        <input type="text" id="task-description" name="new_task_description" placeholder="Rewrite your task">
                         <button type="submit" class="task-button">Edit</button>
                     </form>
                 </div>
