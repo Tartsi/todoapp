@@ -11,14 +11,15 @@
         <h1>Todo App</h1>
     </header>
     <nav>
-        <button class="tab-button active" id="today" onclick="switchToday()">Today</button>
-        <button class="tab-button" id="completed" onclick="switchCompleted()">Completed</button>
-    </nav>
-    <div class="main-content">
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="logout-button">Logout</button>
         </form>
+        <button class="tab-button active" id="today" onclick="switchToday()">Today</button>
+        <button class="tab-button" id="completed" onclick="switchCompleted()">Completed</button>
+    </nav>
+    <div class="main-content">
+
         {% if user.is_authenticated %}
             <h2>{{ user.username }}'s Tasks:</h2>
         {% else %}
