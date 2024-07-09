@@ -11,12 +11,16 @@
         <h1>Todo App</h1>
     </header>
     <nav>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit" class="logout-button">Logout</button>
-        </form>
-        <button class="tab-button active" id="today" onclick="switchToday()">Today</button>
-        <button class="tab-button" id="completed" onclick="switchCompleted()">Completed</button>
+        <div class="left-container">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+        <div class="center-container">
+            <button class="tab-button active" id="today" onclick="switchToday()">Tasks ⚒️</button>
+            <button class="tab-button" id="completed" onclick="switchCompleted()">Completed 👍</button>
+        </div>
     </nav>
     <div class="main-content">
 
@@ -28,7 +32,7 @@
 
         <main>
             <div class="container">
-                <button class="add-task-button" onclick="addTask()">➕ Add</button>
+                <button class="add-task-button" onclick="addTask()">➕ Add 📝</button>
                 <section id="todo-list" class="task-list">
                     {% if tasks %}
                         <h3>Undone tasks: {{ tasks|length }}</h3>
@@ -54,7 +58,7 @@
                         </ul>
                         <form method='post' action="/clear_listed_task">
                             {% csrf_token %}
-                            <button type="submit" onclick="return clearListedTasks()" class="clear-button">➖ Clear undone</button>
+                            <button type="submit" onclick="return clearListedTasks()" class="clear-button">➖ Clear undone 🗑️</button>
                         </form>
                     {% else %}
                         <p>No tasks added yet!</p>
@@ -63,7 +67,7 @@
             </div>
 
                 <div id="addTaskModal" class="modal hidden">
-                    <button onclick="closeAddTask()" class="close-modal-button">X</button>
+                    <button onclick="closeAddTask()" class="close-modal-button">❌</button>
                     <form method='post' action="/add_task">
                         {% csrf_token %}
                         <label for="task-description"></label>
@@ -73,7 +77,7 @@
                 </div>
 
                 <div id="editTaskModal" class="modal hidden">
-                    <button onclick="closeEditTask()" class="close-modal-button">X</button>
+                    <button onclick="closeEditTask()" class="close-modal-button">❌</button>
                     <form method='post' action="/edit_task">
                         {% csrf_token %}
                         <label for="task-description"></label>
@@ -106,7 +110,7 @@
                                 </ul>
                         <form method='post' action="/clear_completed_task">
                             {% csrf_token %}
-                            <button onclick="return clearCompletedTasks()" class="clear-button">➖ Clear completed</button>
+                            <button onclick="return clearCompletedTasks()" class="clear-button">➖ Clear completed 🗑️</button>
                         </form>
                     {% else %}
                         <p>No tasks completed yet!</p>
