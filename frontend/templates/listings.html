@@ -18,7 +18,7 @@
             </form>
         </div>
         <div class="center-container">
-            <button class="tab-button active" id="today" onclick="switchToday()">Tasks ⚒️</button>
+            <button class="tab-button active" id="today" onclick="switchToday()" disabled>Tasks ⚒️</button>
             <button class="tab-button" id="completed" onclick="switchCompleted()">Completed 👍</button>
         </div>
     </nav>
@@ -72,7 +72,7 @@
                         {% csrf_token %}
                         <label for="task-description"></label>
                         <input type="text" id="task-description" name="description" placeholder="Describe your task">
-                        <button type="submit" class="task-button">Add</button>
+                        <button type="submit" class="task-button">➕ Add</button>
                     </form>
                 </div>
 
@@ -83,7 +83,7 @@
                         <label for="task-description"></label>
                         <input type="hidden" id="edit-task-id" name="task_id" value="-1">
                         <input type="text" id="task-description" name="new_task_description" placeholder="Rewrite your task">
-                        <button type="submit" class="task-button">Edit</button>
+                        <button type="submit" class="task-button">✏️ Edit</button>
                     </form>
                 </div>
 
