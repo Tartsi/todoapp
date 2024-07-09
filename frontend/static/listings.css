@@ -79,6 +79,33 @@ nav button {
     cursor: default;
 }
 
+/* Sort options styling */
+.sort-options {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.sort-options label {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.sort-options select {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.sort-options select:focus {
+    border-color: #007bff;
+}
+
 /* Main Content */
 .main-content {
     padding: 2rem 1rem;

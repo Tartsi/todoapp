@@ -24,18 +24,26 @@
     </nav>
     <div class="main-content">
 
-        {% if user.is_authenticated %}
-            <h2>{{ user.username }}'s Tasks:</h2>
-        {% else %}
-            <h2>Not Logged In</h2>
-        {% endif %}
-
         <main>
             <div class="container">
+
+                {% if user.is_authenticated %}
+                    <h2>{{ user.username }}'s Tasks:</h2>
+                {% else %}
+                    <h2>Not Logged In</h2>
+                {% endif %}
+
                 <button class="add-task-button" onclick="addTask()">➕ Add 📝</button>
                 <section id="todo-list" class="task-list">
                     {% if tasks %}
                         <h3>Undone tasks: {{ tasks|length }}</h3>
+                        <div class="sort-options">
+                            <label for="sort-by">Sort by:</label>
+                            <select id="sort-by" onchange="sortTasks()">
+                                <option value="date">Date</option>
+                                <option value="description">Description</option>
+                            </select>
+                        </div>
                         <ul class="task-items">
                             {% for task in tasks %}
                                 <li class="task-item">
@@ -72,7 +80,7 @@
                         {% csrf_token %}
                         <label for="task-description"></label>
                         <input type="text" id="task-description" name="description" placeholder="Describe your task">
-                        <button type="submit" class="task-button">➕ Add</button>
+                        <button type="submit" class="task-button">➕ Add 📝</button>
                     </form>
                 </div>
 
