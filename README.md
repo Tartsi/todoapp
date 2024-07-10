@@ -9,7 +9,7 @@
 ### Intented Features:
 
 - User registration
-- Task management; Creation, Viewing, Editing and Deleting of tasks
+- Task management; Creation, Viewing (of added and completed tasks), Editing and Deleting of tasks
 - Basic UI, with simple CSS
 - Persistent data storage; Either Django's base SQLite3 or MySQL that has a base for it setup in settings.py (commented out)
 - No tests in this project
@@ -58,4 +58,5 @@ Now you can use the application!
 - Create a user on the registration page that meets the necessary requirements
 - Login with the created user
 - Now you can add, edit, delete or clear tasks as you wish!
+- You can view both added, and completed tasks on separate tabs
 - Logout when done
