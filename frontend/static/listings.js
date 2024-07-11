@@ -9,6 +9,38 @@ const tabCompleted = document.getElementById('completed');
 const overlay = document.querySelector('.overlay');
 
 
+function sortTasks(sortBy, order) {
+        let taskList = document.querySelector('.task-items');
+        let tasks = Array.from(taskList.children);
+
+        tasks.sort((a, b) => {
+            if (sortBy === 'date') {
+                let dateA = new Date(a.querySelector('.task-date').innerText.replace('Added: ', ''));
+                let dateB = new Date(b.querySelector('.task-date').innerText.replace('Added: ', ''));
+                if (order === 'asc') {
+                    return dateA - dateB;
+                } else {
+                    return dateB - dateA;
+                }
+            } else if (sortBy === 'description') {
+                let descriptionA = a.querySelector('.task-name').innerText.toLowerCase();
+                let descriptionB = b.querySelector('.task-name').innerText.toLowerCase();
+                if (order === 'asc') {
+                    if (descriptionA < descriptionB) return -1;
+                    if (descriptionA > descriptionB) return 1;
+                    return 0;
+                } else {
+                    if (descriptionA < descriptionB) return 1;
+                    if (descriptionA > descriptionB) return -1;
+                    return 0;
+                }
+            }
+        });
+
+        taskList.innerHTML = '';
+        tasks.forEach(task => taskList.appendChild(task));
+}
+
 function switchCompleted() {
 
     if (tabToday.disabled) {

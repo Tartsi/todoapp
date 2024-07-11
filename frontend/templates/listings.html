@@ -38,17 +38,17 @@
                     {% if tasks %}
                         <h3>Undone tasks: {{ tasks|length }}</h3>
                         <div class="sort-options">
-                            <label for="sort-by">Sort by:</label>
-                            <select id="sort-by" onchange="sortTasks()">
-                                <option value="date">Date</option>
-                                <option value="description">Description</option>
-                            </select>
+                            <label>Sort by:</label>
+                            <button class="sort-button" onclick="sortTasks('date', 'asc')">Date ↑</button>
+                            <button class="sort-button" onclick="sortTasks('date', 'desc')">Date ↓</button>
+                            <button class="sort-button" onclick="sortTasks('description', 'asc')">Description ↑</button>
+                            <button class="sort-button" onclick="sortTasks('description', 'desc')">Description ↓</button>
                         </div>
                         <ul class="task-items">
                             {% for task in tasks %}
                                 <li class="task-item">
                                     <span class="task-name">🗒️ {{ task.task }}</span>
-                                    <span class="task-date">Added: {{ task.created_at|date:"M d" }}</span>
+                                    <span class="task-date">Added: {{ task.created_at|date:"M d H:i:s" }}</span>
                                     <button class="edit-button" onclick="editTask('{{ task.id }}')">✎</button>
                                     <form method="post" action="/delete_task" class="inline-form">
                                         {% csrf_token %}
@@ -105,7 +105,7 @@
                                     {% for completed_task in completed_tasks %}
                                         <li class="task-item">
                                             <span class="task-name">✅ {{ completed_task.task }}</span>
-                                            <span class="task-date">Completed: {{ completed_task.created_at|date:"D M d Y" }} |</span>
+                                            <span class="task-date">Completed: {{ completed_task.created_at|date:"D M d H:i:s" }} |</span>
                                             <form method="post" action="/delete_task" class="inline-form">
                                                 {% csrf_token %}
                                                 <input type="hidden" name="task_id" value="{{ completed_task.id }}">
