@@ -47,9 +47,8 @@
                         <ul class="task-items">
                             {% for task in tasks %}
                                 <li class="task-item">
-                                    <input type="checkbox" class="task-checkbox">
-                                    <span class="task-name">{{ task.task }}</span>
-                                    <span class="task-date">{{ task.created_at|date:"M d" }}</span>
+                                    <span class="task-name">🗒️ {{ task.task }}</span>
+                                    <span class="task-date">Added: {{ task.created_at|date:"M d" }}</span>
                                     <button class="edit-button" onclick="editTask('{{ task.id }}')">✎</button>
                                     <form method="post" action="/delete_task" class="inline-form">
                                         {% csrf_token %}
@@ -105,8 +104,7 @@
                                 <ul class="task-items">
                                     {% for completed_task in completed_tasks %}
                                         <li class="task-item">
-                                            <input type="checkbox" class="task-checkbox">
-                                            <span class="task-name">{{ completed_task.task }}</span>
+                                            <span class="task-name">✅ {{ completed_task.task }}</span>
                                             <span class="task-date">Completed: {{ completed_task.created_at|date:"D M d Y" }} |</span>
                                             <form method="post" action="/delete_task" class="inline-form">
                                                 {% csrf_token %}
