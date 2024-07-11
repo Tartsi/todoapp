@@ -4,7 +4,7 @@
 
 - This project is a Todo-list web application designed to help users manage their daily tasks.
 - Created using Python with Django for backend and JS, HTML and CSS for a simple, minimalistic frontend.
-- Default database is SQLite3 provided by Django, but the project has a base setup for MySQL database that is commented out. .
+- Default database is SQLite3 provided by Django, but the project has a base setup for a MySQL database that is commented out.
 
 ### Intented Features:
 
